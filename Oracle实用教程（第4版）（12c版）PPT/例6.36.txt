@@ -1,0 +1,24 @@
+CREATE OR REPLACE PACKAGE TempPackage 
+	AS
+	PROCEDURE AddStudent  (v_xh IN temp.学号%TYPE);
+	PROCEDURE AddStudent  (v_xh IN temp.学号%TYPE, v_xb IN temp.性别%TYPE);
+END;
+CREATE OR REPLACE PACKAGE BODY TempPackage
+	AS
+	PROCEDURE AddStudent (v_xh IN temp.学号%TYPE)
+	IS
+	BEGIN
+		INSERT INTO temp(学号)
+			VALUES(v_xh);
+	END AddStudent;
+	PROCEDURE AddStudent
+	(
+		v_xh IN temp.学号%TYPE,
+		v_xb IN temp.性别%TYPE
+	)
+	IS 
+	BEGIN
+		INSERT INTO temp(学号,性别)
+			VALUES(v_xh, v_xb);
+	END AddStudent;
+END;
